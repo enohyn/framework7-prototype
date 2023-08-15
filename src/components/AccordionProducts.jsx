@@ -9,6 +9,7 @@ export default () => {
     const [products, setProducts] = useState([]);
     const [singleProd, setSingleProd] = useState({})
     useEffect(() => {
+        
         const fetchData = async () => {
             const allProducts = await fetchAllProducts();
             setProducts(allProducts)
@@ -33,7 +34,7 @@ export default () => {
                                     {product.description}
                                 </p>
                                 <img style={{ width: '100%' }} src={product.images[2]} alt="product-photo" />
-                                <Link href={`/products`} onClick={() => (setSingleProd(products[index]), <Products singleProduct={singleProd}/>, console.log(singleProd))}>Learn more about the Products</Link>
+                                <Link href={`/products/${product.id}`} >Learn more about the Products</Link>
                             </Block>
                         </AccordionContent>
                     </ListItem>

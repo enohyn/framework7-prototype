@@ -6,7 +6,18 @@ export const fetchAllProducts = async () => {
         allProducts = await axios.get('https://dummyjson.com/products').catch(err => console.error(err));
         return allProducts.data.products;
     } catch (error) {
-        window.alert("Api Calling failed: " + error);
+        window.alert("Api Calling failed: " + error.message);
     }
     return allProducts
 };
+
+export const getSingleProduct = async (pid) => {
+    let singleProduct
+    try {
+        singleProduct = await axios.get(`https://dummyjson.com/products/${pid}`).catch(err => console.error(err));
+        return singleProduct.data;
+    } catch (error) {
+        window.alert("Api Calling failed: " + error);
+    }
+    return singleProduct;
+}
